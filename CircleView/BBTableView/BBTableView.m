@@ -23,16 +23,16 @@
     NSInteger _totalRows;
 }
 - (void)customIntitialization;
-- (NSIndexPath*)actualIndexPath;
+//- (NSIndexPath*)actualIndexPath;
 - (void)resetContentOffsetIfNeeded;
-- (void)setupShapeFormationInVisibleCells;
+//- (void)setupShapeFormationInVisibleCells;
 - (CGFloat)getAngleForYOffset:(CGFloat)yOffset;
 @end
 
 @implementation BBTableView
 @synthesize enableInfiniteScrolling;
-@synthesize contentAlignment;
-@synthesize horizontalRadiusCorrection;
+//@synthesize contentAlignment;
+//@synthesize horizontalRadiusCorrection;
 
 #pragma mark Private methods
 - (CGFloat)getAngleForYOffset:(CGFloat)yOffset
@@ -59,9 +59,9 @@
 - (void)customIntitialization
 {
     self.backgroundColor = [UIColor blackColor];
-    contentAlignment = eBBTableViewContentAlignmentLeft;
+    //contentAlignment = eBBTableViewContentAlignmentLeft;
     self.enableInfiniteScrolling = NO;
-    self.horizontalRadiusCorrection=1.0;
+    //self.horizontalRadiusCorrection=1.0;
 }
 
 - (void)resetContentOffsetIfNeeded
@@ -94,7 +94,7 @@
 
 //The heart of this app.
 //this function iterates through all visible cells and lay them in a circular shape
-- (void)setupShapeFormationInVisibleCells
+/*- (void)setupShapeFormationInVisibleCells
 {
     NSArray *indexpaths = [self indexPathsForVisibleRows];
     NSUInteger totalVisibleCells =[indexpaths count];
@@ -150,7 +150,7 @@
             cell.frame = frame;
         }
     }
-}
+}*/
 
 #pragma mark Initialization
 - (id)initWithCoder:(NSCoder *)aDecoder
@@ -190,7 +190,7 @@
     mTotalCellsVisible = self.frame.size.height / self.rowHeight;
     [self resetContentOffsetIfNeeded];
     [super layoutSubviews];
-    [self setupShapeFormationInVisibleCells];
+    //[self setupShapeFormationInVisibleCells];
 }
 
 #pragma mark Setter/Getter

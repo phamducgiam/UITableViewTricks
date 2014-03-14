@@ -24,7 +24,7 @@
 #import <UIKit/UIKit.h>
 #import "BBTableView.h"
 
-@interface BBViewController : UIViewController<UITableViewDataSource,UIScrollViewDelegate>
+@interface BBViewController : UIViewController<UITableViewDataSource,UIScrollViewDelegate, UITableViewDelegate>
 {
     IBOutlet BBTableView *mTableView;
     NSMutableArray *mDataSource;

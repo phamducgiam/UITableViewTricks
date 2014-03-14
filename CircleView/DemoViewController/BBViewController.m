@@ -76,7 +76,7 @@
 
 - (IBAction)switchDirections:(id)sender
 {
-    [mTableView setContentAlignment:[sender selectedSegmentIndex] ? eBBTableViewContentAlignmentRight : eBBTableViewContentAlignmentLeft];
+    //[mTableView setContentAlignment:[sender selectedSegmentIndex] ? eBBTableViewContentAlignmentRight : eBBTableViewContentAlignmentLeft];
     [mTableView reloadData];
 }
 
@@ -144,6 +144,18 @@
            // [self setupShapeFormationInVisibleCells];
         });
     });
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    /*if (indexPath.row%2==0) {
+        return 66.0f;
+    }
+    return 44.0f;*/
+    if (arc4random()%2==0) {
+        return 66.0f;
+    }
+    return 44.0f;
 }
 
 @end
