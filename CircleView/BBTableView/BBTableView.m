@@ -20,6 +20,7 @@
 {
     int mTotalCellsVisible;
     BBTableViewInterceptor *_dataSourceInterceptor;
+    BBTableViewInterceptor *_delegateInterceptor;
     NSInteger _totalRows;
 }
 - (void)customIntitialization;
@@ -194,6 +195,7 @@
 }
 
 #pragma mark Setter/Getter
+
 - (void)setDataSource:(id<UITableViewDataSource>)dataSource
 {
     if( !_dataSourceInterceptor)
@@ -207,8 +209,20 @@
     [super setDataSource:(id<UITableViewDataSource>)_dataSourceInterceptor];
 }
 
+- (void)setDelegate:(id<UITableViewDelegate>)delegate
+{
+    if (!_delegateInterceptor) {
+        _delegateInterceptor = [[BBTableViewInterceptor alloc] init];
+    }
+    
+    _delegateInterceptor.receiver = delegate;
+    _delegateInterceptor.middleMan = self;
+    
+    [super setDelegate:delegate];
+}
 
 #pragma mark UITableViewDataSource
+
 - (NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section
 {
     _totalRows = [_dataSourceInterceptor.receiver tableView:tableView numberOfRowsInSection:section  ];
@@ -218,6 +232,13 @@
 - (UITableViewCell*)tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [_dataSourceInterceptor.receiver tableView:tableView cellForRowAtIndexPath:MORPHED_INDEX_PATH(indexPath)];
+}
+
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return [_delegateInterceptor.receiver tableView:tableView heightForRowAtIndexPath:indexPath];
 }
 
 
