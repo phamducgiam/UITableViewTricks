@@ -5,8 +5,9 @@ Pod::Spec.new do |s|
   s.summary      = "A short description of BBTableView."
   s.homepage     = "http://EXAMPLE/BBTableView"
   s.license      = 'MIT'
-  s.author             = { "Pham Duc Giam" => "phamducgiam@gmail.com" }
+  s.author       = { "Pham Duc Giam" => "phamducgiam@gmail.com" }
   s.platform     = :ios
+  s.requires_arc = true
   s.platform     = :ios, '4.3'
   s.ios.deployment_target = '4.0'
   s.source       = { :git => "https://github.com/phamducgiam/UITableViewTricks.git" }
