@@ -238,8 +238,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [_delegateInterceptor.receiver tableView:tableView heightForRowAtIndexPath:indexPath];
+    return [_delegateInterceptor.receiver tableView:tableView heightForRowAtIndexPath:MORPHED_INDEX_PATH(indexPath)];
 }
-
 
 @end
